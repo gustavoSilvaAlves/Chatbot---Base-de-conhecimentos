@@ -1,0 +1,17 @@
+# Ambiente virtual e variáveis de ambiente
+venv/
+.env
+
+# IDE
+.idea/
+
+# Cache
+__pycache__/
+*.pyc
+
+# Dados locais
+qdrant_data/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
