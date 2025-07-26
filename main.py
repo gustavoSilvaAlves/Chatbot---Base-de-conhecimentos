@@ -17,7 +17,7 @@ st.markdown("""
 - Como abrir um chamado na TI
 """)
 
-# Inicializa a conversa e o retriever
+
 if 'conversation' not in st.session_state or st.session_state.conversation is None:
     retriever = chatbot.get_retriever()
     st.session_state.conversation = chatbot.create_conversation_chain(retriever)
@@ -29,7 +29,7 @@ with st.sidebar:
     st.header('🔒 Área de Admin')
 
     admin_password = st.text_input("Digite a senha de admin", type="password")
-    correct_password = os.getenv("ADMIN_PASSWORD", "senha123")  # Defina no .env
+    correct_password = os.getenv("ADMIN_PASSWORD", "senha123") 
 
     if admin_password == correct_password:
         st.success("Acesso de admin concedido!")
@@ -56,11 +56,10 @@ with st.sidebar:
                         st.success("Base de conhecimento atualizada!")
     else:
         st.info("Entre com a senha para acessar a área de upload de arquivos.")
-# Chat principal
+
 question = st.chat_input("Digite sua pergunta aqui...")
 
 if question:
-    # Exibe mensagens anteriores antes da pergunta atual
     for msg in st.session_state.chat_history:
         st.chat_message("user" if msg.type == "human" else "ai").write(msg.content)
 
