@@ -22,7 +22,7 @@ def process_files(files):
                 text += para.text + "\n"
 
         elif filename.endswith(".txt"):
-            text += file.read().decode("utf-8")  # para garantir compatibilidade
+            text += file.read().decode("utf-8") 
 
     return text if text.strip() else None
 
