@@ -12,7 +12,6 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance, PointStruct
 import uuid
 
-# Configurações
 COLLECTION_NAME = "base_de_conhecimentos"
 host = os.getenv("QDRANT_HOST")
 port = int(os.getenv("QDRANT_PORT"))
@@ -47,7 +46,6 @@ def index_chunks(chunks):
         print("Nenhum chunk válido para inserir.")
 
 def get_retriever():
-    """Retorna o retriever baseado no Qdrant"""
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     return Qdrant(
         client=client,
@@ -65,7 +63,7 @@ def create_conversation_chain(retriever):
         chat_memory=history,
         memory_key="chat_history",
         return_messages=True,
-        output_key="answer"  # 🔧 Adiciona essa linha
+        output_key="answer" 
     )
 
     return ConversationalRetrievalChain.from_llm(
